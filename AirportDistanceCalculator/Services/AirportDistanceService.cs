@@ -34,8 +34,8 @@ namespace AirportDistanceCalculator.Services
             {
                 var httpClient = _clientFactory.CreateClient();
 
-                var fromReqTask = httpClient.GetAsync(_configuration.GetValue<string>("AirportApi") + $"/{airportCodes.From}");
-                var toReqTask = httpClient.GetAsync(_configuration.GetValue<string>("AirportApi") + $"/{airportCodes.To}");
+                var fromReqTask = httpClient.GetAsync($"{_configuration.GetValue<string>("AirportApi")}/{airportCodes.From}");
+                var toReqTask = httpClient.GetAsync($"{_configuration.GetValue<string>("AirportApi")}/{airportCodes.To}");
 
                 await Task.WhenAll(fromReqTask, toReqTask);
 
